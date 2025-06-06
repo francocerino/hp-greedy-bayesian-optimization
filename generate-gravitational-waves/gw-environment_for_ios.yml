@@ -1,0 +1,28 @@
+name: gwenv
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - h5py
+  - astropy
+  - jupyterlab
+  - ipykernel
+  - ipywidgets
+  - notebook
+  - seaborn
+  - scikit-learn
+  - sympy
+  - tqdm
+  - cython
+  - numba
+  - black
+  - flake8
+  - autopep8
+  - pip:
+      - gwsurrogate
+      - gwtools
