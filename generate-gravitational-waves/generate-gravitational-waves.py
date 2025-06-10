@@ -65,7 +65,7 @@ gws = np.asarray(gws)              # shape: (N_samples, N_timepoints)
 parameters = np.asarray(parameters)  # shape: (N_samples, 3)
 
 # Save in HDF5
-filename = f"{args.dimension}d-gw-{suffix}.h5"
+filename = f"gw_{args.dimension}d_{suffix}.h5"
 with h5py.File(filename, 'w') as f:
     f.create_dataset('waveforms/h22', data=gws)
     f.create_dataset('parameters', data=parameters)
