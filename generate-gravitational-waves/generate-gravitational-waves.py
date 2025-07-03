@@ -2,6 +2,7 @@ import argparse
 import numpy as np
 import h5py
 import gwsurrogate
+import time
 
 # Argument parsing
 parser = argparse.ArgumentParser(description="Generate Gravitational Waves")
@@ -30,6 +31,7 @@ gws = []
 parameters = []
 
 print(f"\nGravitational Wave generation started!\n")
+start_time = time.time()
 
 if args.dimension == 1:
     chi_z = 0
@@ -60,6 +62,9 @@ elif args.dimension == 3:
 else:
     raise ValueError("Dimension must be 1, 2 or 3.")
 
+end_time = time.time()
+elapsed_time = end_time - start_time
+
 # Convert to arrays
 gws = np.asarray(gws)              # shape: (N_samples, N_timepoints)
 parameters = np.asarray(parameters)  # shape: (N_samples, 3)
@@ -79,3 +84,4 @@ with h5py.File(filename, 'w') as f:
     f.attrs['description'] = "GW waveforms generated using NRHybSur3dq8"
 
 print(f"\nSaved {gws.shape[0]} waveforms to {filename}")
+print(f"Total generation time: {elapsed_time:.2f} seconds")
